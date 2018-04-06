@@ -1,0 +1,24 @@
+{
+  "name": "case-study",
+  "version": "1.0.0",
+  "description": "Determine the wait-time until the next transit arrival",
+  "main": "index.js",
+  "scripts": {
+    "route:inline" : "do something",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:e2e": "wdio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stevenvang/metrotransit-bus-route.git"
+  },
+  "author": "Steven Vang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stevenvang/metrotransit-bus-route/issues"
+  },
+  "homepage": "https://github.com/stevenvang/metrotransit-bus-route#readme",
+  "devDependencies": {
+    "jest": "^22.4.3"
+  }
+}
