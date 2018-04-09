@@ -19,10 +19,10 @@ This is a nodejs application.  The following pre-conditions is required:
 1) Install all dependencies: `npm install`.
 
 ## Running the program
-Run the following NPM script with the given params:
-`npm run route:inline "INSERT BUS ROUTE" "INSERT BUS STOP NAME" "INSERT DIRECTION"`
+Run the following NPM script with the given params: \n
+`npm run route:inline "INSERT BUS ROUTE" "INSERT BUS STOP NAME" "INSERT DIRECTION"` \n
 example: npm run route:inline "METRO Blue Line" "Target Field Station Platform 1" "southbound"
 
 ## Unit Testing
-Unit testing is developed using the Jest framework.  Under the ./src/api/ folder, each .spec file represents unit tests.
+Unit testing is developed using the Jest framework.  Under the ./src/api/ folder, each .spec file represents unit tests. \n
 To run unit tests, run `npm test`
