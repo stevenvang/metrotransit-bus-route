@@ -4,8 +4,9 @@
   "description": "Determine the wait-time until the next transit arrival",
   "main": "index.js",
   "scripts": {
-    "route:inline" : "do something",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run src/server/server.js",
+    "route:inline": "babel-node index.js \"Metro Blue Line\" \"Target Field Station Platform 2\"",
+    "test": "jest src/api",
     "test:e2e": "wdio"
   },
   "repository": {
@@ -19,6 +20,13 @@
   },
   "homepage": "https://github.com/stevenvang/metrotransit-bus-route#readme",
   "devDependencies": {
-    "jest": "^22.4.3"
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-env": "^2.4.1",
+    "babel-jest": "^22.4.3",
+    "eslint": "^4.19.1",
+    "express": "^4.16.3",
+    "jest": "^22.4.3",
+    "request-promise": "^4.2.2"
   }
 }

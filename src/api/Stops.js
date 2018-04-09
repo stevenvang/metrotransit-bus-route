@@ -1,4 +1,19 @@
-// stops needs an argument or URI for routes and direction.
-// Once the two arguments are determined, we can fetch all stops.
-// return the value of the stop.
-// Next, we will use TimepointDeparture to find the departure time.
+import request from 'request-promise';
+import routes from './routes';
+import directions from './directions';
+
+  async function getStops (route, direction, stop) {
+    const routeURI = await routes.getRoutes(route);
+    const directionURI = await directions.getDirection(route, direction);
+    const URL = `https://svc.metrotransit.org/NexTrip/Stops/${routeURI.Route}/${directionURI.Value}?format=json`;
+
+    const res = await request(URL).catch(e => console.log(e));
+    const body = JSON.parse(res);
+
+    return body
+    .filter(type => type.Text.toLowerCase() === stop.toLowerCase())[0];
+  }
+
+  export default {
+    getStops
+  }

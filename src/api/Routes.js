@@ -1,3 +1,13 @@
-// the routes endpoint will return all routes for all transits.
-// For inline,  process.argsv[i] and return the value of the route Context
-// ez
+import request from 'request-promise';
+
+  async function getRoutes (route) {
+    const URL = 'https://svc.metrotransit.org/NexTrip/Routes?format=json';
+
+    const res = await request(URL).catch(e => console.log(e));
+    const body = JSON.parse(res);
+    return body.filter(type => type.Description.toLowerCase() === route.toLowerCase())[0];
+  }
+
+  export default {
+    getRoutes
+  }

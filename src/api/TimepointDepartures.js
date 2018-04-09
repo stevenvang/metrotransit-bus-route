@@ -1,6 +1,31 @@
-// Once directions, routes, and stops are figured out, we can use this endpoint to figure out the departureText.
-// if array is empty, there are no more routes for the day.
-// if array exists, figure out the next departure by turning the departureTime (in epoch) into DateTime.
-// Match both Date.now and departureTime into the same dateTime format.
-// Next, convert the dateTime format into minutes. departureTime - DateTime.now // 60
-// DONE!
+import request from 'request-promise';
+import routes from './routes';
+import directions from './directions';
+import stops from './stops';
+
+  async function getTimepointDepartures (route, direction, stop) {
+    const routeURI = await routes.getRoutes(route);
+    const directionURI = await directions.getDirection(route, direction);
+    const stopURI = await stops.getStops(route, direction, stop);
+    const URL = `http://svc.metrotransit.org/NexTrip/${routeURI.Route}/${directionURI.Value}/${stopURI.Value}?format=json`;
+
+    const res = await request(URL).catch(e => console.log(e));
+    const timepoints = JSON.parse(res);
+
+    return timepoints;
+  }
+
+async function calculateTimeDifference (route, direction, stop) {
+  let departureTime = await this.getTimepointDepartures(route, direction, stop);
+  let nextDepart = Date(departureTime[0].DepartureTime.slice(6, departureTime[0].DepartureTime.indexOf('-')));
+  let timeDifference = Math.abs(Date.now() - departureTime[0].DepartureTime.slice(6, departureTime[0].DepartureTime.indexOf('-')));
+  let minutes = Math.floor((timeDifference/1000)/60);
+
+  console.log('Next Departure is in', minutes, 'minutes.');
+  return minutes;
+}
+
+export default {
+  getTimepointDepartures,
+  calculateTimeDifference
+}
