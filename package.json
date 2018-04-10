@@ -4,10 +4,8 @@
   "description": "Determine the wait-time until the next transit arrival",
   "main": "index.js",
   "scripts": {
-    "start": "npm run src/server/server.js",
-    "route:inline": "babel-node index.js \"Metro Blue Line\" \"Target Field Station Platform 2\"",
-    "test": "jest src/api",
-    "test:e2e": "wdio"
+    "start": "babel-node index.js",
+    "test": "jest src/api"
   },
   "repository": {
     "type": "git",
